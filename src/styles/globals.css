@@ -1,0 +1,19 @@
+@import url('https://fonts.googleapis.com/css2?family=Jost:wght@300;400;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+*{
+    font-family: 'Jost', sans-serif;
+}
+
+.cke_bottom  , .ck{
+    background:none  !important;
+    border:none !important;
+}
+
+.cke_top{
+    border-bottom: 1px solid #e6e6e6;
+    background:none  !important;
+}
