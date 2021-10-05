@@ -10,7 +10,7 @@ interface CreateTagModalProps {
   open: boolean
   onClose: Dispatch<SetStateAction<boolean>>
 }
-export default function CreateTagModal({ open, onClose }: any) {
+export default function CreateTagModal({ open, onClose }:CreateTagModalProps) {
   const cancelButtonRef = useRef(null)
   const [value , setValue] = useState('')
 const dispatch = useDispatch()

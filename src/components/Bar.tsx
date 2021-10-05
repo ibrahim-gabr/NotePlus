@@ -20,7 +20,7 @@ interface BarProps {
 export default function Bar({ open, onClose }: BarProps) {
   const tags = useSelector((state: any) => state.tags.tags)
   const dispatch = useDispatch()
-  const [createTagModal, setCreateTagModal] = useState(false)
+  const [createTagModal, setCreateTagModal] = useState<boolean>(false)
 
   return (
     <Transition.Root show={open} as={Fragment}>
