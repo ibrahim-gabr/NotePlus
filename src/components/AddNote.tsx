@@ -7,18 +7,19 @@ import Autocomplete from 'react-autocomplete'
 import { Tag } from '../interfaces'
 
 interface NewNoteProps {
-  newNote: boolean
+ 
   showNewNote: Dispatch<SetStateAction<boolean>>
 }
 
-function NewNote({ newNote, showNewNote }: NewNoteProps) {
+const AddNote = ({showNewNote}:NewNoteProps) => {
+
   const dispatch = useDispatch()
   const [content, setContent] = useState('')
   const [title, setTitle] = useState('')
   const tags = useSelector((state: any) => state.tags.tags)
   const [formattedTags, setFormattedTags] = useState([])
   const [pickerItems, setPickerItems] = useState(formattedTags)
-  const [selectedTags, setSelectedTags] = useState([])
+  const [selectedTags, setSelectedTags] = useState<Tag[]>([])
   const [selectedTag, setSelectedTag] = useState('')
 
   useEffect(() => {
@@ -55,13 +56,14 @@ function NewNote({ newNote, showNewNote }: NewNoteProps) {
     const tagExists = selectedTags.filter((t: any): t is Tag => t.id == tag.id)[0]
 
     if (!tagExists) {
-      setSelectedTags((old) => [...old, tag])
+      const selectedTagsUpdated:Tag[] = [...selectedTags , tag]
+      setSelectedTags(selectedTagsUpdated)
     } else {
       setSelectedTags(selectedTags.filter((t: any): t is Tag => t.id != tag.id))
     }
   }
   return (
-    newNote && (
+  
       <div className="bg-white  mb-6 py-6 px-4">
         <div className="flex space-x-3 mb-2">
           <label htmlFor="title" className="text-2xl">
@@ -89,11 +91,10 @@ function NewNote({ newNote, showNewNote }: NewNoteProps) {
           <div className="relative ">
             <span className="mr-2 ">Select Tags</span>
             <Autocomplete
-         
               getItemValue={(item) => item.label}
               items={pickerItems}
               renderItem={(item, isHighlighted) => {
-                const isSelected = selectedTags.filter((t) => t.label == item.label)
+                const isSelected = selectedTags.filter((t:any):t is Tag => t.label == item.label)
 
                 return (
                   <div
@@ -139,7 +140,7 @@ function NewNote({ newNote, showNewNote }: NewNoteProps) {
             />
           </div>
           <div className="flex space-x-1">
-            {selectedTags?.map((t:Tag) => (
+            {selectedTags?.map((t: Tag) => (
               <span
                 key={t.id}
                 className="inline-flex items-center  px-2.5 py-0.5 rounded-md text-sm font-medium bg-pink-100 text-pink-800"
@@ -169,8 +170,8 @@ function NewNote({ newNote, showNewNote }: NewNoteProps) {
           </button>
         </div>
       </div>
-    )
+    
   )
 }
 
-export default NewNote
+export default AddNote

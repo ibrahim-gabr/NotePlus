@@ -22,21 +22,9 @@ import { useDispatch, useSelector } from 'react-redux'
 import { asyncGetAllNotes } from '../features/notes/notesSlice'
 import { asyncGetAllTags } from '../features/tags/tagSlice'
 
-const navigation = [
-  { name: 'Dashboard', href: '#', icon: HomeIcon, current: true },
-  { name: 'Team', href: '#', icon: UsersIcon, current: false },
-  { name: 'Projects', href: '#', icon: FolderIcon, current: false },
-  { name: 'Calendar', href: '#', icon: CalendarIcon, current: false },
-  { name: 'Documents', href: '#', icon: InboxIcon, current: false },
-  { name: 'Reports', href: '#', icon: ChartBarIcon, current: false },
-]
-const userNavigation = [
-  { name: 'Your Profile', href: '#' },
-  { name: 'Settings', href: '#' },
-  { name: 'Sign out', href: '#' },
-]
 
-function classNames(...classes) {
+
+function classNames(...classes:string[]) {
   return classes.filter(Boolean).join(' ')
 }
 

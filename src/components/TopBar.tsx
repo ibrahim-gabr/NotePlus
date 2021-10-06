@@ -1,7 +1,11 @@
-import React from 'react'
+import React, { Dispatch, SetStateAction } from 'react'
 import { PencilIcon } from '@heroicons/react/outline'
 
-function TopBar({ showNewNote, newNote }) {
+interface TopBarProps{
+  showNewNote:Dispatch<SetStateAction<boolean>>
+  newNote:boolean
+}
+function TopBar({ showNewNote, newNote }:TopBarProps) {
   return (
     <div
       onClick={(e) => showNewNote(!newNote)}

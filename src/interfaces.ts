@@ -4,10 +4,11 @@ export interface action {
   click: string
 }
 export interface Tag {
-  name: string
-  id: number
-  notes: Note[]
+  name?: string
+  id?: number
+  notes?: Note[]
   label?:string
+  value?:string
 }
 export interface Note {
   id?: number

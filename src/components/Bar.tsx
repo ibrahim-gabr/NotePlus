@@ -74,13 +74,13 @@ export default function Bar({ open, onClose }: BarProps) {
                               <div className="ml-4 truncate flex justify-between items-ceter w-full">
                                 <p
                                   className="text-xl font-medium text-gray-900 truncate flex-1"
-                                  onClick={(e) => dispatch(asyncGetTagNotes(tag.id))}
+                                  onClick={(e) => dispatch(asyncGetTagNotes(tag.id!))}
                                 >
                                   {tag.name}
                                 </p>
                                 <TrashIcon
                                   className="h-6 w-6"
-                                  onClick={(e) => dispatch(asyncDeleteTag(tag.id))}
+                                  onClick={(e) => dispatch(asyncDeleteTag(tag.id!))}
                                 />
                               </div>
                             </div>

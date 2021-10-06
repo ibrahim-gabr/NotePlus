@@ -11,16 +11,16 @@ import { Note, Tag } from '../interfaces'
 interface EditModalProps {
   note:Note
   open: boolean
-  onClose: (arg0: string) => void
+  onClose: (clickHanndle: string | boolean) => void
 }
 
-export default function EditModal({ note, open, onClose }:any) {
+export default function EditModal({ note, open, onClose }:EditModalProps) {
   const [content, setContent] = useState(note.body)
   const [title, setTitle] = useState('')
   const tags = useSelector((state: any) => state.tags.tags)
   const [formattedTags, setFormattedTags] = useState([])
   const [pickerItems, setPickerItems] = useState(formattedTags)
-  const [selectedTags, setSelectedTags] = useState([])
+  const [selectedTags, setSelectedTags] = useState<Tag[]>([])
   const [selectedTag, setSelectedTag] = useState('')
   const dispatch = useDispatch()
 
@@ -29,9 +29,11 @@ export default function EditModal({ note, open, onClose }:any) {
     setContent(note?.body)
     setTitle(note?.title)
     setSelectedTags([])
-    note?.tags?.map((tag) => {
+    note?.tags?.map((tag:Tag) => {
+      const selectedTagsUpdated:Tag[] = [...selectedTags , { id: tag.id, label: tag.name, value: tag.name }]
+
       tag.name != 'All' &&
-        setSelectedTags((old) => [...old, { id: tag.id, label: tag.name, value: tag.name }])
+        setSelectedTags(selectedTagsUpdated)
     })
     // setTags(activeNote?.tags);
   }, [note])
@@ -40,7 +42,7 @@ export default function EditModal({ note, open, onClose }:any) {
   useEffect(() => {
     let preformattedTags = []
     if (tags.length > 0) {
-      preformattedTags = tags.map((tag) => ({
+      preformattedTags = tags.map((tag:Tag) => ({
         value: tag.name,
         label: tag.name,
         id: tag.id,
@@ -59,17 +61,18 @@ export default function EditModal({ note, open, onClose }:any) {
       title,
       body: content,
 
-      tag_id: selectedTags.map((t) => t.id),
+      tag_id: selectedTags.map((t:any):t is Tag => t.id),
     }
 
     dispatch(asyncSaveNote(note_to_handle))
   }
   const handleSelect = (value:string) => {
-    const tag = pickerItems.filter((t:any):t is Tag => t.label == value)[0]
+    const tag:Tag = pickerItems.filter((t:any):t is Tag => t.label == value)[0]
     const tagExists = selectedTags.filter((t:any):t is Tag => t.id == tag.id)[0]
 
     if (!tagExists) {
-      setSelectedTags((old) => [...old, tag])
+      const selectedTagsUpdated:Tag[] = [...selectedTags , tag]
+      setSelectedTags(selectedTagsUpdated)
     } else {
       setSelectedTags(selectedTags.filter((t:any):t is Tag => t.id != tag.id))
     }
