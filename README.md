@@ -42,9 +42,18 @@ Start the server
   
 ## Screenshots
 
-#   Homepage
+##   Homepage
 
-![App Screenshot](./public/screenshots/homepage.png)
+![App Screenshot](public/screenshots/Homepage.png)
+##   Create Note
+
+![App Screenshot](public/screenshots/CreateNote.png)
+##   Tags
+
+![App Screenshot](public/screenshots/Tags.png)
+##   Edit Note
+
+![App Screenshot](public/screenshots/EditNote.png)
 
 
 
