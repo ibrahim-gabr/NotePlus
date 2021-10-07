@@ -8,17 +8,9 @@ Manage all your notes and filter them by Tags
 
 - NextJS
 - Redux 
+- Typescript
 - Tailwind CSS
 
-
-  
-## Deployment
-
-To deploy this project run
-
-```bash
-  npm run deploy
-```
 
   
 ## Run Locally
@@ -48,3 +40,10 @@ Start the server
 ```
 
   
+## Screenshots
+
+-   Homepage
+![App Screenshot](frontend/public/screenshots/homepage.png)
+
+
+
