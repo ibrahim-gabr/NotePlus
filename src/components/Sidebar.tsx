@@ -16,9 +16,11 @@ import {
 } from '@heroicons/react/outline'
 
 import Bar from './Bar'
+import { useDispatch } from 'react-redux'
+import { asyncGetAllNotes } from '../features/notes/notesSlice'
 
 const navigation = [
-  { name: 'Your Notes', icon: DocumentIcon, href: '#', current: true },
+  { name: 'All Notes', icon: DocumentIcon, href: '#', current: true , click: 'allNotes'},
   { name: 'Tags', icon: TagIcon, href: '#', count: 3, current: false, click: 'showBarUi' },
   // { name: 'Bin', icon: TrashIcon, href: '#', count: 4, current: false },
 ]
@@ -35,11 +37,14 @@ interface SidebarProps {
 function Sidebar({ newNote, showNewNote }: SidebarProps) {
   const [showBarUi, setShowBarUi] = useState(false)
   const [sidebarOpen, setSidebarOpen] = useState(false)
-
+  const dispatch = useDispatch()
   const handleClick = (clickHanndle: string) => {
     if (clickHanndle === 'showBarUi') {
       setShowBarUi(!showBarUi)
       setSidebarOpen(!sidebarOpen)
+    }
+    if (clickHanndle === 'allNotes') {
+      dispatch(asyncGetAllNotes())
     }
   }
 

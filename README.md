@@ -42,7 +42,8 @@ Start the server
   
 ## Screenshots
 
--   Homepage
+#   Homepage
+
 ![App Screenshot](./public/screenshots/homepage.png)
 
 
