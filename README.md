@@ -44,7 +44,7 @@ Start the server
 
 ##   Homepage
 
-![App Screenshot](public/screenshots/Homepage.png)
+![App Screenshot](public/screenshots/homepage.png)
 ##   Create Note
 
 ![App Screenshot](public/screenshots/CreateNote.png)
