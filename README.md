@@ -43,7 +43,7 @@ Start the server
 ## Screenshots
 
 -   Homepage
-![App Screenshot](frontend/public/screenshots/homepage.png)
+![App Screenshot](./public/screenshots/homepage.png)
 
 
 
