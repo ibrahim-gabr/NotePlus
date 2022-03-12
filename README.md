@@ -4,6 +4,8 @@
 - Manage all your notes and filter them by Tags
 - Backend is done in laravel in this repo 
   https://github.com/webdevsamurai/Laravel-Notes-Api-
+- Live. Link
+  https://noteplus-froontend.vercel.app/
 
 ## Features
 
